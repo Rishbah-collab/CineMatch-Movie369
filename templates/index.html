@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="data:,">
+
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">🎬 CineMatch</div>
+
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">Reviews</a>
+        </nav>
+
+        <div class="nav-actions">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search movies...">
+                <span class="icon" onclick="searchMovies()">🔍</span>
+            </div>
+
+            <button class="icon-btn" onclick="openWishlist()" title="Wishlist">
+                ❤️ <span id="wishlistCount">0</span>
+            </button>
+
+            
+
+<a href="{% url 'login' %}" class="login-btn" s
+tyle="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+    👤 Login
+</a>
+
+
+
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="slider">
+            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800" id="sliderImage" alt="Hero Image">
+            <button class="arrow left" onclick="prevSlide()">❮</button>
+            <button class="arrow right" onclick="nextSlide()">❯</button>
+        </div>
+        <div class="side-posters">
+            <img src="https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=400" alt="Poster 1">
+            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400" alt="Poster 2">
+        </div>
+    </section>
+
+    <section class="recommendation-section">
+        <h2>🎯 Get Personalized Recommendations</h2>
+        <div class="filter-controls">
+            <div class="filter-group">
+                <label>Recommendation Type:</label>
+                <select id="filterType">
+                    <option value="collaborative">Collaborative Filtering</option>
+                    <option value="content">Content-Based Filtering</option>
+                    <option value="hybrid">Hybrid (Both)</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Genre Filter:</label>
+                <select id="genreFilter">
+                    <option value="all">All Genres</option>
+                    <option value="Action">Action</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Animation">Animation</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Comedy">Comedy</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>&nbsp;</label>
+                <button onclick="getRecommendations()">Get Recommendations</button>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="recommendations-title">🎬 All Movies - Rate to Get Recommendations</h2>
+    <section class="movies" id="moviesGrid"></section>
+
+    <div id="recommendationsSection"></div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="modal">
+        <div class="modal-content wishlist-modal">
+            <span class="close" onclick="closeWishlist()">&times;</span>
+            <h2>My Wishlist ❤️</h2>
+            <div id="wishlistContent"></div>
+        </div>
+    </div>
+
+                  <!-- footer -->
+
+    <footer class="cinematch-footer">
+        <div class="footer-top">
+            Need help choosing a movie? <span>AI is here for you 🎬🤖</span>
+        </div>
+
+        <div class="footer-links">
+            <div>
+                <a href="#">About CineMatch</a>
+                <a href="#">How Recommendations Work</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">AI Ethics</a>
+            </div>
+
+            <div>
+                <a href="#">Help Center</a>
+                <a href="#">Careers</a>
+                <a href="#">Cookie Preferences</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+
+            <div>
+                <a href="#">Your Account</a>
+                <a href="#">Watch History</a>
+                <a href="#">Personalized Lists</a>
+                <a href="#">Only on CineMatch</a>
+            </div>
+
+            <div>
+                <a href="#">Media & Press</a>
+                <a href="#">Developer API</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+
+
+
+             <!-- footer -->
+
+        <div class="footer-bottom">
+            <div class="footer-left">
+                <select class="language-select">
+                    <option>🌐 English</option>
+                    <option>हिंदी Hindi</option>
+                    <option>日本語 Japanese</option>
+                    <option>Español Spanish</option>
+                </select>
+            </div>
+
+            <div class="footer-right">
+                <p>
+                    © 2026 <strong>CineMatch AI</strong><br>
+                    Smart Movie Recommendation System powered by AI & ML
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
